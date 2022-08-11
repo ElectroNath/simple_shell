@@ -43,7 +43,7 @@ void puter(char *str)
 {
 	while (*str != '\0')
 	{
-		charput(*str);
+		char_put(*str);
 		str++;
 	}
 }

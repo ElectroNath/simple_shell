@@ -84,7 +84,7 @@ char **keysInit(char *parameter)
 		i++;
 		split = strtok(NULL, delim);
 	}
-	execute_proc(buf);
+	execute(buf);
 	return (buf);
 
 }
@@ -92,7 +92,7 @@ char **keysInit(char *parameter)
  * ctrlC - avoid close the shell
  * @sig: keep going shell
  **/
-void  controlC(int sig)
+void  ctrlC(int sig)
 {
 	(void) sig;
 	write(1, "\n$ ", 3);

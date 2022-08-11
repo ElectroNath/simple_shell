@@ -29,7 +29,7 @@ void execute(char **cmd)
 	}
 	else
 	{
-		o = find_command(vartoprint);
+		o = discover_command(vartoprint);
 
 		slash = str_concat(o, slash);
 

@@ -17,23 +17,23 @@ void shell_prompt(void)
 		lenbuf = getline(&text, &bufsize, stdin);
 		if (lenbuf == -1)
 			exit(98);
-		if (compareExit(text, "exit") == 0)
+		if (findslashExit(text, "exit") == 0)
 			exit(0);
-		if (compareEnv(text, "env") == 0)
+		if (findslashEnv(text, "env") == 0)
 		{
 			while (*environ != NULL)
 			{
-				if (!(_strcmpdir(*environ, "USER")) ||
-						!(_strcmpdir(*environ, "LANGUAGE")) ||
-						!(_strcmpdir(*environ, "SESSION")) ||
-						!(_strcmpdir(*environ, "COMPIZ_CONFIG_PROFILE")) ||
-						!(_strcmpdir(*environ, "SHLV")) ||
-						!(_strcmpdir(*environ, "HOME")) ||
-						!(_strcmpdir(*environ, "C_IS")) ||
-						!(_strcmpdir(*environ, "DESKTOP_SESSION")) ||
-						!(_strcmpdir(*environ, "LOGNAME")) ||
-						!(_strcmpdir(*environ, "TERM")) ||
-						!(_strcmpdir(*environ, "PATH")))
+				if (!(_strcmprdir(*environ, "USER")) ||
+						!(_strcmprdir(*environ, "LANGUAGE")) ||
+						!(_strcmprdir(*environ, "SESSION")) ||
+						!(_strcmprdir(*environ, "COMPIZ_CONFIG_PROFILE")) ||
+						!(_strcmprdir(*environ, "SHLV")) ||
+						!(_strcmprdir(*environ, "HOME")) ||
+						!(_strcmprdir(*environ, "C_IS")) ||
+						!(_strcmprdir(*environ, "DESKTOP_SESSION")) ||
+						!(_strcmprdir(*environ, "LOGNAME")) ||
+						!(_strcmprdir(*environ, "TERM")) ||
+						!(_strcmprdir(*environ, "PATH")))
 				{
 					place(*environ), place("\n"); }
 				environ++; }}
@@ -41,7 +41,7 @@ void shell_prompt(void)
 		if (child_pid < 0)
 			perror("Error");
 		if (child_pid == 0)
-			identify_string(text);
+			keysInit(text);
 		else
 			wait(&status);
 	}}

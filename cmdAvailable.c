@@ -17,7 +17,7 @@ char *discover_command(char *command)
 
 	while (*environ != NULL)
 	{
-		if (!(_strcmpdir(*environ, "PATH")))
+		if (!(_strcmprdir(*environ, "PATH")))
 		{
 			*str = *environ;
 			for (i = 0; i < 9; i++, split++, str++)
@@ -31,7 +31,7 @@ char *discover_command(char *command)
 				while ((entry = readdir(folder)))
 				{
 					cmd = entry->d_name;
-					comp = _strcmpdir(cmd, command);
+					comp = _strcmprdir(cmd, command);
 					if (comp == 0)
 					{
 						return (*split);
