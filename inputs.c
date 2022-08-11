@@ -39,7 +39,7 @@ int char_put(char c)
  *
  * Return: int
  */
-void puter(char *str)
+void place(char *str)
 {
 	while (*str != '\0')
 	{
